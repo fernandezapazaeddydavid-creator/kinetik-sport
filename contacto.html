@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contacto | KINETIC SPORT</title>
+  <meta name="description" content="Escríbenos: formulario de contacto, datos de la tienda y redes sociales de KINETIC SPORT.">
+
+  <link rel="icon" href="img/logo/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="img/logo/favicon.ico">
+  <link rel="apple-touch-icon" href="img/logo/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <script>
+    try {
+      var t = localStorage.getItem('ks_tema');
+      if (t === 'claro' || t === 'oscuro') document.documentElement.dataset.tema = t;
+    } catch (e) {}
+  </script>
+
+  <script defer src="js/app.js"></script>
+  <script defer src="js/favoritos.js"></script>
+  <script defer src="js/carrito.js"></script>
+  <script defer src="js/contacto.js"></script>
+</head>
+
+<body class="pagina-oscura">
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+  <header class="encabezado">
+    <div class="contenedor encabezado__barra">
+
+      <a class="logo" href="index.html" aria-label="KINETIC SPORT, ir al inicio">
+        <img src="img/logo/logo-oscuro.svg" alt="KINETIC SPORT" width="160" height="40">
+      </a>
+
+      <nav class="menu" id="menu" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <form class="buscador" id="form-buscador" role="search" autocomplete="off">
+        <svg class="icono buscador__icono" aria-hidden="true"><use href="img/iconos.svg#buscar"/></svg>
+        <label class="solo-lectores" for="buscar">Buscar productos</label>
+        <input type="search" id="buscar" name="q" placeholder="Buscar productos...">
+        <div class="sugerencias" id="sugerencias" hidden></div>
+      </form>
+
+      <div class="acciones">
+        <button class="accion" id="btn-tema" type="button" aria-label="Cambiar a modo claro">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#sol"/></svg>
+        </button>
+        <a class="accion" href="productos.html?favoritos=1" aria-label="Mis favoritos">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#corazon"/></svg>
+          <span class="contador" id="contador-favoritos" hidden>0</span>
+        </a>
+        <a class="accion" href="carrito.html" aria-label="Carrito de compras">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#carrito"/></svg>
+          <span class="contador" id="contador-carrito" hidden>0</span>
+        </a>
+        <button class="accion hamburguesa" id="btn-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#menu"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+  <main id="contenido">
+
+    <section class="pagina-cabecera">
+      <div class="contenedor">
+        <p class="pagina-cabecera__ruta"><a href="index.html">Inicio</a> / Contacto</p>
+        <h1>Hablemos <span>contigo</span></h1>
+        <p class="pagina-cabecera__texto">¿Dudas sobre un producto, una talla o tu pedido? Escríbenos y te respondemos lo antes posible.</p>
+      </div>
+    </section>
+
+    <section class="seccion" aria-label="Formulario e información de contacto">
+      <div class="contenedor contacto">
+
+        <!-- ===================== FORMULARIO ===================== -->
+        <div class="panel">
+          <h2 class="panel__titulo">Envíanos un mensaje</h2>
+
+          <!-- "novalidate": la validación la hace contacto.js, no el navegador -->
+          <form class="formulario" id="form-contacto" novalidate>
+            <div class="formulario__grid">
+
+              <div class="campo-grupo">
+                <label for="c-nombre">Nombre completo</label>
+                <input class="campo" type="text" id="c-nombre" name="nombre" autocomplete="name"
+                       placeholder="Ej: Eddy Fernandez Apaza" maxlength="60" aria-describedby="e-nombre">
+                <p class="campo__error" id="e-nombre" role="alert"></p>
+              </div>
+
+              <div class="campo-grupo">
+                <label for="c-correo">Correo electrónico</label>
+                <input class="campo" type="email" id="c-correo" name="correo" autocomplete="email"
+                       placeholder="fernandezapaza@correo.com" maxlength="80" aria-describedby="e-correo">
+                <p class="campo__error" id="e-correo" role="alert"></p>
+              </div>
+
+              <div class="campo-grupo">
+                <label for="c-celular">Celular</label>
+                <input class="campo" type="tel" id="c-celular" name="celular" autocomplete="tel"
+                       inputmode="tel" placeholder="Ej: 67217082" maxlength="16" aria-describedby="e-celular">
+                <p class="campo__error" id="e-celular" role="alert"></p>
+              </div>
+
+              <div class="campo-grupo">
+                <label for="c-asunto">Asunto</label>
+                <input class="campo" type="text" id="c-asunto" name="asunto"
+                       placeholder="Ej: Consulta sobre tallas" maxlength="80" aria-describedby="e-asunto">
+                <p class="campo__error" id="e-asunto" role="alert"></p>
+              </div>
+
+              <div class="campo-grupo formulario__completo">
+                <label for="c-mensaje">Mensaje</label>
+                <textarea class="campo" id="c-mensaje" name="mensaje" rows="5" maxlength="500"
+                          placeholder="Cuéntanos en qué podemos ayudarte..." aria-describedby="e-mensaje"></textarea>
+                <p class="campo__error" id="e-mensaje" role="alert"></p>
+                <p class="campo__contador" id="c-contador">0 / 500</p>
+              </div>
+
+            </div>
+
+            <button class="btn btn--primario" type="submit">Enviar mensaje</button>
+            <p class="formulario__nota">Este formulario es una simulación: no se envía ningún correo real.</p>
+          </form>
+
+          <!-- Confirmación (se muestra al enviar correctamente) -->
+          <div class="exito" id="contacto-exito" tabindex="-1" hidden>
+            <span class="exito__icono" aria-hidden="true"><svg class="icono"><use href="img/iconos.svg#check"/></svg></span>
+            <h3>¡Gracias, <span id="exito-nombre"></span>!</h3>
+            <p>Recibimos tu mensaje. Te responderemos al correo <b id="exito-correo"></b> lo antes posible.</p>
+            <p class="formulario__nota">(Envío simulado para este proyecto académico.)</p>
+            <button class="btn btn--secundario" type="button" id="btn-otro">Enviar otro mensaje</button>
+          </div>
+        </div>
+
+        <!-- ===================== INFORMACIÓN ===================== -->
+        <aside class="panel" aria-label="Datos de contacto">
+          <h2 class="panel__titulo">Datos de contacto</h2>
+
+          <ul class="info-contacto">
+            <li>
+              <span class="info-contacto__icono"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#ubicacion"/></svg></span>
+              <div><strong>Dirección</strong>Av. Bolivar #123, Oruro, Bolivia</div>
+            </li>
+            <li>
+              <span class="info-contacto__icono"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#telefono"/></svg></span>
+              <div><strong>Teléfono</strong>+591 67260078</div>
+            </li>
+            <li>
+              <span class="info-contacto__icono"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#correo"/></svg></span>
+              <div><strong>Correo</strong>contacto@kineticsport.demo</div>
+            </li>
+            <li>
+              <span class="info-contacto__icono"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#reloj"/></svg></span>
+              <div><strong>Horario</strong>Lunes a sábado, 9:00 a 19:00</div>
+            </li>
+          </ul>
+
+          <h3 class="panel__subtitulo">Síguenos</h3>
+          <div class="pie__redes">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#facebook"/></svg></a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#instagram"/></svg></a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#youtube"/></svg></a>
+          </div>
+
+          <p class="etiqueta-demo">Datos de demostración</p>
+          <p class="panel__ayuda">¿Una duda rápida? Mira nuestras <a class="enlace-flecha" href="faq.html">preguntas frecuentes</a>.</p>
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+  <footer class="pie">
+    <div class="contenedor pie__grid">
+      <div>
+        <a class="pie__logo" href="index.html"><img src="img/logo/logo-oscuro.svg" alt="KINETIC SPORT" width="176" height="44"></a>
+        <p class="pie__lema">Muévete. Supérate.</p>
+        <p>Tienda deportiva virtual nacida en Oruro, Bolivia, con productos para todas las disciplinas.</p>
+        <div class="pie__redes">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#facebook"/></svg></a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#instagram"/></svg></a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#youtube"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Tienda</h3>
+        <ul>
+          <li><a href="productos.html">Todos los productos</a></li>
+          <li><a href="productos.html?categoria=F%C3%BAtbol">Fútbol</a></li>
+          <li><a href="productos.html?categoria=B%C3%A1squetbol">Básquetbol</a></li>
+          <li><a href="productos.html?categoria=Running">Running</a></li>
+          <li><a href="productos.html?categoria=Fitness">Fitness</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ayuda</h3>
+        <ul>
+          <li><a href="faq.html">Preguntas frecuentes</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="carrito.html">Mi carrito</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li>Av. Bolivar #123, Oruro, Bolivia</li>
+          <li>+591 67260078</li>
+          <li>contacto@kineticsport.demo</li>
+          <li>Lunes a sábado, 9:00 a 19:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="contenedor pie__legal">
+      <p>© <span data-anio></span> KINETIC SPORT · Proyecto académico de Diseño y Programación Web</p>
+      <p>Productos, dirección, teléfono y correo son datos de demostración.</p>
+    </div>
+  </footer>
+  <div class="notificaciones" id="notificaciones" aria-live="polite"></div>
+</body>
+</html>

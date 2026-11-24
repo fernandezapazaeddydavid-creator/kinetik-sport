@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KINETIC SPORT | Tienda deportiva en Bolivia</title>
+  <meta name="description" content="KINETIC SPORT: calzado, ropa, balones y accesorios para fútbol, básquetbol, voleibol, running y fitness. Muévete. Supérate.">
+
+  <!-- Íconos de la pestaña -->
+  <link rel="icon" href="img/logo/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="img/logo/favicon.ico">
+  <link rel="apple-touch-icon" href="img/logo/apple-touch-icon.png">
+
+  <!-- Tipografías: Barlow Condensed (títulos) e Inter (textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/KINETIC-SPORT/css/estilos.css">
+
+  <!-- Aplica el tema guardado ANTES de pintar la página (evita parpadeo) -->
+  <script>
+    try {
+      var t = localStorage.getItem('ks_tema');
+      if (t === 'claro' || t === 'oscuro') document.documentElement.dataset.tema = t;
+    } catch (e) {}
+  </script>
+
+  <!-- Orden importante: app.js primero, luego los módulos y al final el script de la página -->
+  <script defer src="js/app.js"></script>
+  <script defer src="js/favoritos.js"></script>
+  <script defer src="js/carrito.js"></script>
+  <script defer src="js/incio.js"></script>
+</head>
+
+<!-- "pagina-oscura": la portada es oscura por defecto -->
+<body class="pagina-oscura">
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <!-- ===================== ENCABEZADO ===================== -->
+  <header class="encabezado">
+    <div class="contenedor encabezado__barra">
+
+      <a class="logo" href="index.html" aria-label="KINETIC SPORT, ir al inicio">
+        <img src="img/logo/logo-oscuro.svg" alt="KINETIC SPORT" width="160" height="40">
+      </a>
+
+      <nav class="menu" id="menu" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <form class="buscador" id="form-buscador" role="search" autocomplete="off">
+        <svg class="icono buscador__icono" aria-hidden="true"><use href="img/iconos.svg#buscar"/></svg>
+        <label class="solo-lectores" for="buscar">Buscar productos</label>
+        <input type="search" id="buscar" name="q" placeholder="Buscar productos...">
+        <div class="sugerencias" id="sugerencias" hidden></div>
+      </form>
+
+      <div class="acciones">
+        <button class="accion" id="btn-tema" type="button" aria-label="Cambiar a modo claro">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#sol"/></svg>
+        </button>
+        <a class="accion" href="productos.html?favoritos=1" aria-label="Mis favoritos">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#corazon"/></svg>
+          <span class="contador" id="contador-favoritos" hidden>0</span>
+        </a>
+        <a class="accion" href="carrito.html" aria-label="Carrito de compras">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#carrito"/></svg>
+          <span class="contador" id="contador-carrito" hidden>0</span>
+        </a>
+        <button class="accion hamburguesa" id="btn-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#menu"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ===================== BANNER PRINCIPAL ===================== -->
+    <section class="hero" aria-labelledby="hero-titulo">
+      <div class="hero__fondo" aria-hidden="true"></div>
+      <span class="hero__diagonal hero__diagonal--1" aria-hidden="true"></span>
+      <span class="hero__diagonal hero__diagonal--2" aria-hidden="true"></span>
+
+      <div class="contenedor hero__contenido">
+        <div class="hero__caja">
+          <p class="hero__etiqueta" data-entrada style="--n:0">Tienda deportiva · Oruro, Bolivia</p>
+          <h1 id="hero-titulo" data-entrada style="--n:1">Muévete.<br><span>Supérate.</span></h1>
+          <p class="hero__texto" data-entrada style="--n:2">
+            Zapatillas, uniformes, balones y accesorios para fútbol, básquetbol, voleibol,
+            running y fitness. Todo en un solo lugar, para cada nivel.
+          </p>
+          <div class="hero__botones" data-entrada style="--n:3">
+            <a class="btn btn--primario" href="productos.html">Explorar productos</a>
+            <a class="btn btn--secundario" href="#promociones">Ver ofertas</a>
+          </div>
+        </div>
+
+        <!-- Collage de fotos (solo se ve en pantallas grandes) -->
+        <div class="hero__collage" aria-hidden="true" data-entrada style="--n:2; --desde:80px">
+          <figure><img src="img/categorias/running.jpg" alt=""></figure>
+          <figure><img src="img/categorias/fitness.jpg" alt=""></figure>
+          <figure><img src="img/categorias/futbol.jpg" alt=""></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FRANJA DE BENEFICIOS ===================== -->
+    <section class="beneficios" aria-label="Beneficios de comprar en KINETIC SPORT">
+      <ul class="contenedor beneficios__lista">
+        <li class="beneficio">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#camion"/></svg>
+          <div><strong>Envíos a todo el país</strong><span>Gratis desde <span data-envio-min></span></span></div>
+        </li>
+        <li class="beneficio">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#escudo"/></svg>
+          <div><strong>Compra segura</strong><span>Tus datos siempre protegidos</span></div>
+        </li>
+        <li class="beneficio">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#devolver"/></svg>
+          <div><strong>Cambios fáciles</strong><span>¿No te quedó? Lo cambiamos</span></div>
+        </li>
+        <li class="beneficio">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#audifonos"/></svg>
+          <div><strong>Atención personalizada</strong><span>Te asesoramos en tu compra</span></div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===================== CATEGORÍAS ===================== -->
+    <section class="seccion" id="categorias" aria-labelledby="cat-titulo">
+      <div class="contenedor">
+        <div class="titulo-seccion"><h2 id="cat-titulo">Compra por disciplina</h2></div>
+
+        <!-- La cantidad de productos de cada categoría la calcula inicio.js desde el JSON -->
+        <div class="categorias">
+          <a class="cat" href="productos.html?categoria=F%C3%BAtbol">
+            <img src="img/categorias/futbol.jpg" alt="" loading="lazy">
+            <div class="cat__info"><div><h3>Fútbol</h3><span class="cat__cantidad" data-categoria="Fútbol"></span></div>
+              <span class="cat__flecha"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#flecha"/></svg></span></div>
+          </a>
+          <a class="cat" href="productos.html?categoria=B%C3%A1squetbol">
+            <img src="img/categorias/basquetbol.jpg" alt="" loading="lazy">
+            <div class="cat__info"><div><h3>Básquetbol</h3><span class="cat__cantidad" data-categoria="Básquetbol"></span></div>
+              <span class="cat__flecha"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#flecha"/></svg></span></div>
+          </a>
+          <a class="cat" href="productos.html?categoria=Voleibol">
+            <img src="img/categorias/voleibol.jpg" alt="" loading="lazy">
+            <div class="cat__info"><div><h3>Voleibol</h3><span class="cat__cantidad" data-categoria="Voleibol"></span></div>
+              <span class="cat__flecha"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#flecha"/></svg></span></div>
+          </a>
+          <a class="cat" href="productos.html?categoria=Running">
+            <img src="img/categorias/running.jpg" alt="" loading="lazy">
+            <div class="cat__info"><div><h3>Running</h3><span class="cat__cantidad" data-categoria="Running"></span></div>
+              <span class="cat__flecha"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#flecha"/></svg></span></div>
+          </a>
+          <a class="cat" href="productos.html?categoria=Fitness">
+            <img src="img/categorias/fitness.jpg" alt="" loading="lazy">
+            <div class="cat__info"><div><h3>Fitness</h3><span class="cat__cantidad" data-categoria="Fitness"></span></div>
+              <span class="cat__flecha"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#flecha"/></svg></span></div>
+          </a>
+          <a class="cat" href="productos.html?categoria=Accesorios">
+            <img src="img/categorias/accesorios.jpg" alt="" loading="lazy">
+            <div class="cat__info"><div><h3>Accesorios</h3><span class="cat__cantidad" data-categoria="Accesorios"></span></div>
+              <span class="cat__flecha"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#flecha"/></svg></span></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PRODUCTOS DESTACADOS ===================== -->
+    <section class="seccion seccion--alt" id="destacados" aria-labelledby="dest-titulo">
+      <div class="contenedor">
+        <div class="seccion__cabecera">
+          <div class="titulo-seccion"><h2 id="dest-titulo">Productos destacados</h2></div>
+          <a class="enlace-flecha" href="productos.html">Ver todo el catálogo
+            <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#flecha"/></svg></a>
+        </div>
+        <div class="grilla-productos grilla-productos--3" id="destacados-grid">
+          <p class="cargando">Cargando productos…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROMOCIONES ===================== -->
+    <section class="seccion promo" id="promociones" aria-labelledby="promo-titulo">
+      <div class="contenedor">
+        <div class="promo__cabecera">
+          <div>
+            <div class="titulo-seccion"><h2 id="promo-titulo">Ofertas de la semana</h2></div>
+            <p class="promo__texto">Descuentos en calzado, ropa y accesorios. Aprovecha antes de que termine la cuenta regresiva.</p>
+          </div>
+          <!-- La cuenta regresiva la actualiza inicio.js cada segundo -->
+          <div class="cuenta" role="timer" aria-label="Tiempo restante de la oferta semanal">
+            <div class="cuenta__caja"><span class="cuenta__valor" id="cuenta-dias">00</span><span class="cuenta__etiqueta">Días</span></div>
+            <div class="cuenta__caja"><span class="cuenta__valor" id="cuenta-horas">00</span><span class="cuenta__etiqueta">Horas</span></div>
+            <div class="cuenta__caja"><span class="cuenta__valor" id="cuenta-minutos">00</span><span class="cuenta__etiqueta">Min</span></div>
+            <div class="cuenta__caja"><span class="cuenta__valor" id="cuenta-segundos">00</span><span class="cuenta__etiqueta">Seg</span></div>
+          </div>
+        </div>
+        <div class="grilla-productos grilla-productos--4" id="promos-grid">
+          <p class="cargando">Cargando ofertas…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== NOVEDADES ===================== -->
+    <section class="seccion" id="novedades" aria-labelledby="nov-titulo">
+      <div class="contenedor">
+        <div class="seccion__cabecera">
+          <div class="titulo-seccion"><h2 id="nov-titulo">Novedades</h2></div>
+          <a class="enlace-flecha" href="productos.html">Descubrir más
+            <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#flecha"/></svg></a>
+        </div>
+        <div class="grilla-productos grilla-productos--4" id="novedades-grid">
+          <p class="cargando">Cargando novedades…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== IDENTIDAD DE LA MARCA ===================== -->
+    <section class="seccion seccion--alt" aria-labelledby="ident-titulo">
+      <div class="contenedor identidad">
+        <div class="identidad__marca" aria-hidden="true">
+          <img src="img/logo/simbolo-oscuro.svg" alt="">
+        </div>
+        <div>
+          <div class="titulo-seccion"><h2 id="ident-titulo">Somos KINETIC</h2></div>
+          <p>
+            Nacimos en Oruro con una idea simple: que cada persona pueda moverse con ropa,
+            calzado y accesorios de calidad, sin importar su deporte ni su nivel.
+          </p>
+          <div class="pilares">
+            <div class="pilar"><strong>Calidad</strong><span>Productos pensados para rendir.</span></div>
+            <div class="pilar"><strong>Comodidad</strong><span>Cada detalle suma al entrenar.</span></div>
+            <div class="pilar"><strong>Pasión</strong><span>El deporte es nuestro motor.</span></div>
+          </div>
+          <a class="btn btn--primario" href="nosotros.html">Conoce nuestra historia</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== PIE DE PÁGINA ===================== -->
+  <footer class="pie">
+    <div class="contenedor pie__grid">
+      <div>
+        <a class="pie__logo" href="index.html"><img src="img/logo/logo-oscuro.svg" alt="KINETIC SPORT" width="176" height="44"></a>
+        <p class="pie__lema">Muévete. Supérate.</p>
+        <p>Tienda deportiva virtual nacida en Oruro, Bolivia, con productos para todas las disciplinas.</p>
+        <div class="pie__redes">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#facebook"/></svg></a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#instagram"/></svg></a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#youtube"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Tienda</h3>
+        <ul>
+          <li><a href="productos.html">Todos los productos</a></li>
+          <li><a href="productos.html?categoria=F%C3%BAtbol">Fútbol</a></li>
+          <li><a href="productos.html?categoria=B%C3%A1squetbol">Básquetbol</a></li>
+          <li><a href="productos.html?categoria=Running">Running</a></li>
+          <li><a href="productos.html?categoria=Fitness">Fitness</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ayuda</h3>
+        <ul>
+          <li><a href="faq.html">Preguntas frecuentes</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="carrito.html">Mi carrito</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li>Av. Bolivar #123, Oruro, Bolivia</li>
+          <li>+591 67260078</li>
+          <li>contacto@kineticsport.demo</li>
+          <li>Lunes a sábado, 9:00 a 19:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="contenedor pie__legal">
+      <p>© <span data-anio></span> KINETIC SPORT · Proyecto académico de Diseño y Programación Web</p>
+      <p>Productos, dirección, teléfono y correo son datos de demostración.</p>
+    </div>
+  </footer>
+
+  <!-- Aquí aparecen las notificaciones (las crea KS.notificar) -->
+  <div class="notificaciones" id="notificaciones" aria-live="polite"></div>
+</body>
+</html>

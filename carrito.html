@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carrito | KINETIC SPORT</title>
+  <meta name="description" content="Revisa los productos de tu carrito en KINETIC SPORT, cambia cantidades y continúa con tu compra.">
+
+  <link rel="icon" href="img/logo/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="img/logo/favicon.ico">
+  <link rel="apple-touch-icon" href="img/logo/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <script>
+    try {
+      var t = localStorage.getItem('ks_tema');
+      if (t === 'claro' || t === 'oscuro') document.documentElement.dataset.tema = t;
+    } catch (e) {}
+  </script>
+
+  <script defer src="js/app.js"></script>
+  <script defer src="js/favoritos.js"></script>
+  <script defer src="js/carrito.js"></script>
+  <script defer src="js/carrito-pagina.js"></script>
+</head>
+
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <header class="encabezado">
+    <div class="contenedor encabezado__barra">
+
+      <a class="logo" href="index.html" aria-label="KINETIC SPORT, ir al inicio">
+        <img src="img/logo/logo-oscuro.svg" alt="KINETIC SPORT" width="160" height="40">
+      </a>
+
+      <nav class="menu" id="menu" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <form class="buscador" id="form-buscador" role="search" autocomplete="off">
+        <svg class="icono buscador__icono" aria-hidden="true"><use href="img/iconos.svg#buscar"/></svg>
+        <label class="solo-lectores" for="buscar">Buscar productos</label>
+        <input type="search" id="buscar" name="q" placeholder="Buscar productos...">
+        <div class="sugerencias" id="sugerencias" hidden></div>
+      </form>
+
+      <div class="acciones">
+        <button class="accion" id="btn-tema" type="button" aria-label="Cambiar a modo claro">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#sol"/></svg>
+        </button>
+        <a class="accion" href="productos.html?favoritos=1" aria-label="Mis favoritos">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#corazon"/></svg>
+          <span class="contador" id="contador-favoritos" hidden>0</span>
+        </a>
+        <a class="accion" href="carrito.html" aria-label="Carrito de compras">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#carrito"/></svg>
+          <span class="contador" id="contador-carrito" hidden>0</span>
+        </a>
+        <button class="accion hamburguesa" id="btn-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#menu"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main id="contenido">
+    <div class="contenedor detalle-pagina">
+
+      <p class="pagina-cabecera__ruta"><a href="index.html">Inicio</a> / Carrito</p>
+      <h1 class="carrito-titulo">Tu <span>carrito</span></h1>
+
+      <!-- Barra de envío gratis -->
+      <div class="envio" id="c-envio" hidden>
+        <p class="envio__texto" id="c-envio-texto"></p>
+        <div class="envio__barra" role="progressbar" aria-label="Progreso hacia el envío gratis" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="c-envio-barra">
+          <span id="c-envio-relleno"></span>
+        </div>
+      </div>
+
+      <!-- Carrito vacío -->
+      <div class="carrito-vacio" id="c-vacio" hidden>
+        <span class="carrito-vacio__icono" aria-hidden="true"><svg class="icono"><use href="img/iconos.svg#carrito"/></svg></span>
+        <h2>Tu carrito está vacío</h2>
+        <p>Agrega productos desde el catálogo y aparecerán aquí.</p>
+        <a class="btn btn--primario" href="productos.html">Ir al catálogo</a>
+      </div>
+
+      <!-- Carrito con productos -->
+      <div class="carrito" id="c-contenido" hidden>
+
+        <section aria-label="Productos del carrito">
+          <ul class="carrito-lista" id="c-lista"></ul>
+          <div class="carrito-acciones">
+            <a class="enlace-flecha" href="productos.html">← Seguir comprando</a>
+            <button class="enlace-boton" type="button" id="c-vaciar">Vaciar carrito</button>
+          </div>
+        </section>
+
+        <aside class="resumen" aria-label="Resumen del pedido">
+          <h2>Resumen</h2>
+          <dl class="resumen__lista">
+            <div><dt>Productos (<span id="r-unidades">0</span>)</dt><dd id="r-subtotal">—</dd></div>
+            <div class="resumen__ahorro" id="r-fila-ahorro"><dt>Descuentos</dt><dd id="r-ahorro">—</dd></div>
+            <div><dt>Envío</dt><dd id="r-envio">—</dd></div>
+            <div class="resumen__total"><dt>Total</dt><dd id="r-total">—</dd></div>
+          </dl>
+          <a class="btn btn--primario btn--bloque" href="compra.html">Continuar con la compra</a>
+          <p class="resumen__nota">Compra simulada: no se realiza ningún cobro real.</p>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie__grid">
+      <div>
+        <a class="pie__logo" href="index.html"><img src="img/logo/logo-oscuro.svg" alt="KINETIC SPORT" width="176" height="44"></a>
+        <p class="pie__lema">Muévete. Supérate.</p>
+        <p>Tienda deportiva virtual nacida en Oruro, Bolivia, con productos para todas las disciplinas.</p>
+        <div class="pie__redes">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#facebook"/></svg></a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#instagram"/></svg></a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#youtube"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Tienda</h3>
+        <ul>
+          <li><a href="productos.html">Todos los productos</a></li>
+          <li><a href="productos.html?categoria=F%C3%BAtbol">Fútbol</a></li>
+          <li><a href="productos.html?categoria=B%C3%A1squetbol">Básquetbol</a></li>
+          <li><a href="productos.html?categoria=Running">Running</a></li>
+          <li><a href="productos.html?categoria=Fitness">Fitness</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ayuda</h3>
+        <ul>
+          <li><a href="faq.html">Preguntas frecuentes</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="carrito.html">Mi carrito</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li>Av. Bolivar #123, Oruro, Bolivia</li>
+          <li>+591 67260078</li>
+          <li>contacto@kineticsport.demo</li>
+          <li>Lunes a sábado, 9:00 a 19:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="contenedor pie__legal">
+      <p>© <span data-anio></span> KINETIC SPORT · Proyecto académico de Diseño y Programación Web</p>
+      <p>Productos, dirección, teléfono y correo son datos de demostración.</p>
+    </div>
+  </footer>
+
+  <div class="notificaciones" id="notificaciones" aria-live="polite"></div>
+</body>
+</html>

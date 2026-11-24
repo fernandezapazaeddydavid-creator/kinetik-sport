@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nosotros | KINETIC SPORT</title>
+  <meta name="description" content="Conoce la historia, misión, visión y valores de KINETIC SPORT, tienda deportiva nacida en Oruro, Bolivia.">
+
+  <link rel="icon" href="img/logo/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="img/logo/favicon.ico">
+  <link rel="apple-touch-icon" href="img/logo/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <script>
+    try {
+      var t = localStorage.getItem('ks_tema');
+      if (t === 'claro' || t === 'oscuro') document.documentElement.dataset.tema = t;
+    } catch (e) {}
+  </script>
+
+  <!-- Esta página no necesita un script propio: solo los módulos comunes -->
+  <script defer src="js/app.js"></script>
+  <script defer src="js/favoritos.js"></script>
+  <script defer src="js/carrito.js"></script>
+</head>
+
+<body class="pagina-oscura">
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+<header class="encabezado">
+    <div class="contenedor encabezado__barra">
+
+      <a class="logo" href="index.html" aria-label="KINETIC SPORT, ir al inicio">
+        <img src="img/logo/logo-oscuro.svg" alt="KINETIC SPORT" width="160" height="40">
+      </a>
+
+      <nav class="menu" id="menu" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <form class="buscador" id="form-buscador" role="search" autocomplete="off">
+        <svg class="icono buscador__icono" aria-hidden="true"><use href="img/iconos.svg#buscar"/></svg>
+        <label class="solo-lectores" for="buscar">Buscar productos</label>
+        <input type="search" id="buscar" name="q" placeholder="Buscar productos...">
+        <div class="sugerencias" id="sugerencias" hidden></div>
+      </form>
+
+      <div class="acciones">
+        <button class="accion" id="btn-tema" type="button" aria-label="Cambiar a modo claro">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#sol"/></svg>
+        </button>
+        <a class="accion" href="productos.html?favoritos=1" aria-label="Mis favoritos">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#corazon"/></svg>
+          <span class="contador" id="contador-favoritos" hidden>0</span>
+        </a>
+        <a class="accion" href="carrito.html" aria-label="Carrito de compras">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#carrito"/></svg>
+          <span class="contador" id="contador-carrito" hidden>0</span>
+        </a>
+        <button class="accion hamburguesa" id="btn-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#menu"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+  <main id="contenido">
+
+    <section class="pagina-cabecera">
+      <div class="contenedor">
+        <p class="pagina-cabecera__ruta"><a href="index.html">Inicio</a> / Nosotros</p>
+        <h1>Somos <span>KINETIC</span></h1>
+        <p class="pagina-cabecera__texto">Una marca deportiva nacida en Oruro, con la energía de quienes se mueven todos los días.</p>
+      </div>
+    </section>
+
+    <!-- ===================== QUIÉNES SOMOS ===================== -->
+    <section class="seccion" aria-labelledby="quienes-titulo">
+      <div class="contenedor nosotros-intro">
+        <div>
+          <div class="titulo-seccion"><h2 id="quienes-titulo">Quiénes somos</h2></div>
+          <p>
+            KINETIC SPORT es una tienda deportiva virtual con productos para fútbol, básquetbol,
+            voleibol, running y fitness, pensados para hombres y mujeres y para todos los niveles,
+            desde quienes empiezan hasta deportistas con experiencia.
+          </p>
+          <p>
+            Creemos que moverse es una forma de superarse. Por eso elegimos cada producto pensando
+            en tres cosas: que sea de calidad, que sea cómodo y que te acompañe en cada entrenamiento.
+          </p>
+          <blockquote class="lema">Muévete. Supérate.</blockquote>
+        </div>
+        <figure class="nosotros-foto">
+          <img src="img/banner/baner.jpg" alt="Deportistas entrenando juntos" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================== LÍNEA DE TIEMPO ===================== -->
+    <section class="seccion seccion--alt" aria-labelledby="historia-titulo">
+      <div class="contenedor">
+        <div class="titulo-seccion"><h2 id="historia-titulo">Nuestra historia</h2></div>
+
+        <ol class="timeline">
+          <li class="timeline__item">
+            <span class="timeline__marca" aria-hidden="true">01</span>
+            <div class="timeline__tarjeta">
+              <span class="timeline__etapa">Los inicios</span>
+              <h3>La chispa</h3>
+              <p>Todo empezó en Oruro como un pequeño emprendimiento de ropa, calzado y accesorios deportivos para quienes entrenan y compiten en la ciudad, con una idea clara: el deporte se disfruta más con buen equipamiento.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__marca" aria-hidden="true">02</span>
+            <div class="timeline__tarjeta">
+              <span class="timeline__etapa">Confianza</span>
+              <h3>Primeros pasos</h3>
+              <p>La calidad y la comodidad de cada producto fueron ganando la confianza de deportistas y equipos locales. El boca a boca hizo el resto.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__marca" aria-hidden="true">03</span>
+            <div class="timeline__tarjeta">
+              <span class="timeline__etapa">Crecimiento</span>
+              <h3>Más disciplinas</h3>
+              <p>El catálogo se amplió a fútbol, básquetbol, voleibol, running y fitness, con productos para hombres y mujeres y para todos los niveles.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__marca" aria-hidden="true">04</span>
+            <div class="timeline__tarjeta">
+              <span class="timeline__etapa">Innovación</span>
+              <h3>El salto digital</h3>
+              <p>KINETIC SPORT se convirtió en tienda virtual para que cualquier persona pueda conocer los productos, compararlos y comprar desde su casa o su celular.</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <span class="timeline__marca" aria-hidden="true">05</span>
+            <div class="timeline__tarjeta">
+              <span class="timeline__etapa">El futuro</span>
+              <h3>Hacia adelante</h3>
+              <p>La visión es llegar a todo Bolivia y seguir acompañando a cada persona en su camino deportivo. Esta historia apenas comienza.</p>
+            </div>
+          </li>
+        </ol>
+
+        <p class="nota-demo">Historia ilustrativa creada para este proyecto académico.</p>
+      </div>
+    </section>
+
+    <!-- ===================== MISIÓN, VISIÓN, VALORES, OBJETIVOS ===================== -->
+    <section class="seccion" aria-labelledby="mvv-titulo">
+      <div class="contenedor">
+        <div class="titulo-seccion"><h2 id="mvv-titulo">Lo que nos mueve</h2></div>
+
+        <div class="valores">
+          <article class="valor">
+            <div class="valor__foto"><img src="img/categorias/Vision.jpg" alt="" loading="lazy"></div>
+            <div class="valor__cuerpo">
+              <h3>Misión</h3>
+              <p>Ofrecer ropa, calzado y accesorios deportivos de calidad y comodidad, para que cada persona pueda moverse, entrenar y competir con confianza, desde Oruro hasta todo Bolivia.</p>
+            </div>
+          </article>
+
+          <article class="valor">
+            <div class="valor__foto"><img src="img/categorias/Mision.jpg" alt="" loading="lazy"></div>
+            <div class="valor__cuerpo">
+              <h3>Visión</h3>
+              <p>Ser la tienda deportiva virtual de referencia en Bolivia, reconocida por la calidad de sus productos, su servicio cercano y por inspirar a cada persona a superarse.</p>
+            </div>
+          </article>
+
+          <article class="valor">
+            <div class="valor__foto"><img src="img/categorias/Valores.jpg" alt="" loading="lazy"></div>
+            <div class="valor__cuerpo">
+              <h3>Valores</h3>
+              <ul class="valor__lista">
+                <li><b>Calidad:</b> productos pensados para rendir.</li>
+                <li><b>Comodidad:</b> cada detalle suma al entrenar.</li>
+                <li><b>Pasión:</b> el deporte es nuestro motor.</li>
+                <li><b>Compromiso:</b> cumplimos lo que prometemos.</li>
+                <li><b>Cercanía:</b> te escuchamos y te asesoramos.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="valor">
+            <div class="valor__foto"><img src="img/categorias/Objetivos.jpg" alt="" loading="lazy"></div>
+            <div class="valor__cuerpo">
+              <h3>Objetivos</h3>
+              <ul class="valor__lista">
+                <li>Ampliar el catálogo para cada disciplina y nivel.</li>
+                <li>Llegar con nuestros envíos a todo el país.</li>
+                <li>Brindar una compra simple, segura y rápida.</li>
+                <li>Acompañar a deportistas principiantes y avanzados.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LLAMADO A LA ACCIÓN ===================== -->
+    <section class="cta" aria-label="Explorar productos">
+      <div class="contenedor cta__caja">
+        <h2>¿Listo para moverte?</h2>
+        <a class="btn btn--oscuro" href="productos.html">Ver el catálogo</a>
+      </div>
+    </section>
+
+  </main>
+  <footer class="pie">
+    <div class="contenedor pie__grid">
+      <div>
+        <a class="pie__logo" href="index.html"><img src="img/logo/logo-oscuro.svg" alt="KINETIC SPORT" width="176" height="44"></a>
+        <p class="pie__lema">Muévete. Supérate.</p>
+        <p>Tienda deportiva virtual nacida en Oruro, Bolivia, con productos para todas las disciplinas.</p>
+        <div class="pie__redes">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#facebook"/></svg></a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#instagram"/></svg></a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#youtube"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Tienda</h3>
+        <ul>
+          <li><a href="productos.html">Todos los productos</a></li>
+          <li><a href="productos.html?categoria=F%C3%BAtbol">Fútbol</a></li>
+          <li><a href="productos.html?categoria=B%C3%A1squetbol">Básquetbol</a></li>
+          <li><a href="productos.html?categoria=Running">Running</a></li>
+          <li><a href="productos.html?categoria=Fitness">Fitness</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ayuda</h3>
+        <ul>
+          <li><a href="faq.html">Preguntas frecuentes</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="carrito.html">Mi carrito</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li>Av. Bolivar #123, Oruro, Bolivia</li>
+          <li>+591 67260078</li>
+          <li>contacto@kineticsport.demo</li>
+          <li>Lunes a sábado, 9:00 a 19:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="contenedor pie__legal">
+      <p>© <span data-anio></span> KINETIC SPORT · Proyecto académico de Diseño y Programación Web</p>
+      <p>Productos, dirección, teléfono y correo son datos de demostración.</p>
+    </div>
+  </footer>
+
+  <div class="notificaciones" id="notificaciones" aria-live="polite"></div>
+</body>
+</html>

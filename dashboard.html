@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | KINETIC SPORT</title>
+  <meta name="description" content="Panel de control del inventario de KINETIC SPORT: indicadores, gráficos y productos con bajo stock.">
+
+  <link rel="icon" href="img/logo/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="img/logo/favicon.ico">
+  <link rel="apple-touch-icon" href="img/logo/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <script>
+    try {
+      var t = localStorage.getItem('ks_tema');
+      if (t === 'claro' || t === 'oscuro') document.documentElement.dataset.tema = t;
+    } catch (e) {}
+  </script>
+
+  <!-- Chart.js (librería de gráficos, archivo local) debe ir ANTES de dashboard.js -->
+  <script defer src="js/lib/chart.umd.min.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="js/favoritos.js"></script>
+  <script defer src="js/carrito.js"></script>
+  <script defer src="js/dashboard.js"></script>
+</head>
+
+<body class="pagina-oscura">
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+  
+  <header class="encabezado">
+    <div class="contenedor encabezado__barra">
+
+      <a class="logo" href="index.html" aria-label="KINETIC SPORT, ir al inicio">
+        <img src="img/logo/logo-oscuro.svg" alt="KINETIC SPORT" width="160" height="40">
+      </a>
+
+      <nav class="menu" id="menu" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <form class="buscador" id="form-buscador" role="search" autocomplete="off">
+        <svg class="icono buscador__icono" aria-hidden="true"><use href="img/iconos.svg#buscar"/></svg>
+        <label class="solo-lectores" for="buscar">Buscar productos</label>
+        <input type="search" id="buscar" name="q" placeholder="Buscar productos...">
+        <div class="sugerencias" id="sugerencias" hidden></div>
+      </form>
+
+      <div class="acciones">
+        <button class="accion" id="btn-tema" type="button" aria-label="Cambiar a modo claro">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#sol"/></svg>
+        </button>
+        <a class="accion" href="productos.html?favoritos=1" aria-label="Mis favoritos">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#corazon"/></svg>
+          <span class="contador" id="contador-favoritos" hidden>0</span>
+        </a>
+        <a class="accion" href="carrito.html" aria-label="Carrito de compras">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#carrito"/></svg>
+          <span class="contador" id="contador-carrito" hidden>0</span>
+        </a>
+        <button class="accion hamburguesa" id="btn-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#menu"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <div class="panel-admin">
+
+    <!-- ===================== MENÚ LATERAL ===================== -->
+    <aside class="panel-lateral" aria-label="Secciones del dashboard">
+      <p class="panel-lateral__titulo">Panel de control</p>
+      <nav>
+        <ul class="panel-lateral__menu">
+          <li><a href="#resumen">Resumen</a></li>
+          <li><a href="#graficos">Gráficos</a></li>
+          <li><a href="#bajo-stock">Bajo stock</a></li>
+          <li><a href="productos.html">Ver catálogo</a></li>
+          <li><a href="index.html">Ir a la tienda</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="panel-principal" id="contenido">
+
+      <div class="panel-principal__cabecera">
+        <div>
+          <h1>Dashboard de <span>inventario</span></h1>
+          <p class="panel-principal__sub">
+            Datos leídos de <code>productos.json</code> ·
+            Actualizado: <time id="dash-fecha">—</time>
+          </p>
+        </div>
+        <button class="btn btn--secundario" type="button" id="dash-actualizar">Actualizar datos</button>
+      </div>
+
+      <!-- Mensaje de error / carga -->
+      <div id="dash-estado" role="status"></div>
+
+      <!-- ===================== INDICADORES ===================== -->
+      <section id="resumen" aria-label="Indicadores principales">
+        <div class="kpis">
+          <article class="kpi">
+            <span class="kpi__etiqueta">Total de productos</span>
+            <strong class="kpi__valor" id="kpi-total">—</strong>
+            <span class="kpi__nota">Registrados en el catálogo</span>
+          </article>
+          <article class="kpi">
+            <span class="kpi__etiqueta">Categorías</span>
+            <strong class="kpi__valor" id="kpi-categorias">—</strong>
+            <span class="kpi__nota">Disciplinas distintas</span>
+          </article>
+          <article class="kpi kpi--destacado">
+            <span class="kpi__etiqueta">Valor del inventario</span>
+            <strong class="kpi__valor" id="kpi-valor">—</strong>
+            <span class="kpi__nota">Precio de venta actual × stock</span>
+          </article>
+          <article class="kpi">
+            <span class="kpi__etiqueta">Disponibles</span>
+            <strong class="kpi__valor kpi__valor--ok" id="kpi-disponibles">—</strong>
+            <span class="kpi__nota">Con más de 5 unidades</span>
+          </article>
+          <article class="kpi">
+            <span class="kpi__etiqueta">Bajo stock</span>
+            <strong class="kpi__valor kpi__valor--aviso" id="kpi-bajo">—</strong>
+            <span class="kpi__nota">De 1 a 5 unidades</span>
+          </article>
+          <article class="kpi">
+            <span class="kpi__etiqueta">Agotados</span>
+            <strong class="kpi__valor kpi__valor--error" id="kpi-agotados">—</strong>
+            <span class="kpi__nota">Sin unidades</span>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================== GRÁFICOS ===================== -->
+      <section id="graficos" class="graficos" aria-label="Gráficos">
+        <article class="grafico">
+          <h2>Productos por categoría</h2>
+          <div class="grafico__lienzo">
+            <canvas id="grafico-categorias" role="img" aria-label="Gráfico de barras con la cantidad de productos por categoría"></canvas>
+          </div>
+        </article>
+        <article class="grafico">
+          <h2>Distribución del stock</h2>
+          <div class="grafico__lienzo">
+            <canvas id="grafico-stock" role="img" aria-label="Gráfico circular con productos disponibles, con bajo stock y agotados"></canvas>
+          </div>
+        </article>
+      </section>
+
+      <!-- ===================== TABLA BAJO STOCK ===================== -->
+      <section id="bajo-stock" class="tabla-caja" aria-labelledby="bajo-titulo">
+        <h2 id="bajo-titulo">Productos con bajo inventario</h2>
+        <p class="tabla-caja__sub">Productos con 5 unidades o menos, del más urgente al menos urgente.</p>
+        <div class="tabla-scroll">
+          <table class="tabla">
+            <thead>
+              <tr>
+                <th scope="col">Producto</th>
+                <th scope="col">Categoría</th>
+                <th scope="col" class="tabla__num">Cantidad</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-bajo"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <footer class="pie">
+    <div class="contenedor pie__grid">
+      <div>
+        <a class="pie__logo" href="index.html"><img src="img/logo/logo-oscuro.svg" alt="KINETIC SPORT" width="176" height="44"></a>
+        <p class="pie__lema">Muévete. Supérate.</p>
+        <p>Tienda deportiva virtual nacida en Oruro, Bolivia, con productos para todas las disciplinas.</p>
+        <div class="pie__redes">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#facebook"/></svg></a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#instagram"/></svg></a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#youtube"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Tienda</h3>
+        <ul>
+          <li><a href="productos.html">Todos los productos</a></li>
+          <li><a href="productos.html?categoria=F%C3%BAtbol">Fútbol</a></li>
+          <li><a href="productos.html?categoria=B%C3%A1squetbol">Básquetbol</a></li>
+          <li><a href="productos.html?categoria=Running">Running</a></li>
+          <li><a href="productos.html?categoria=Fitness">Fitness</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ayuda</h3>
+        <ul>
+          <li><a href="faq.html">Preguntas frecuentes</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="carrito.html">Mi carrito</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li>Av. Bolivar #123, Oruro, Bolivia</li>
+          <li>+591 67260078</li>
+          <li>contacto@kineticsport.demo</li>
+          <li>Lunes a sábado, 9:00 a 19:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="contenedor pie__legal">
+      <p>© <span data-anio></span> KINETIC SPORT · Proyecto académico de Diseño y Programación Web</p>
+      <p>Productos, dirección, teléfono y correo son datos de demostración.</p>
+    </div>
+  </footer>
+
+  <div class="notificaciones" id="notificaciones" aria-live="polite"></div>
+</body>
+</html>

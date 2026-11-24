@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Preguntas frecuentes | KINETIC SPORT</title>
+  <meta name="description" content="Resolvemos tus dudas sobre compras, envíos, cambios y tallas en KINETIC SPORT.">
+
+  <link rel="icon" href="img/logo/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="img/logo/favicon.ico">
+  <link rel="apple-touch-icon" href="img/logo/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,700;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <script>
+    try {
+      var t = localStorage.getItem('ks_tema');
+      if (t === 'claro' || t === 'oscuro') document.documentElement.dataset.tema = t;
+    } catch (e) {}
+  </script>
+
+  <script defer src="js/app.js"></script>
+  <script defer src="js/favoritos.js"></script>
+  <script defer src="js/carrito.js"></script>
+  <script defer src="js/faq.js"></script>
+</head>
+
+<body>
+  <a class="saltar-contenido" href="#contenido">Saltar al contenido</a>
+
+  <header class="encabezado">
+    <div class="contenedor encabezado__barra">
+
+      <a class="logo" href="index.html" aria-label="KINETIC SPORT, ir al inicio">
+        <img src="img/logo/logo-oscuro.svg" alt="KINETIC SPORT" width="160" height="40">
+      </a>
+
+      <nav class="menu" id="menu" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <form class="buscador" id="form-buscador" role="search" autocomplete="off">
+        <svg class="icono buscador__icono" aria-hidden="true"><use href="img/iconos.svg#buscar"/></svg>
+        <label class="solo-lectores" for="buscar">Buscar productos</label>
+        <input type="search" id="buscar" name="q" placeholder="Buscar productos...">
+        <div class="sugerencias" id="sugerencias" hidden></div>
+      </form>
+
+      <div class="acciones">
+        <button class="accion" id="btn-tema" type="button" aria-label="Cambiar a modo claro">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#sol"/></svg>
+        </button>
+        <a class="accion" href="productos.html?favoritos=1" aria-label="Mis favoritos">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#corazon"/></svg>
+          <span class="contador" id="contador-favoritos" hidden>0</span>
+        </a>
+        <a class="accion" href="carrito.html" aria-label="Carrito de compras">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#carrito"/></svg>
+          <span class="contador" id="contador-carrito" hidden>0</span>
+        </a>
+        <button class="accion hamburguesa" id="btn-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+          <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#menu"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <section class="pagina-cabecera">
+      <div class="contenedor">
+        <p class="pagina-cabecera__ruta"><a href="index.html">Inicio</a> / Preguntas frecuentes</p>
+        <h1>Preguntas <span>frecuentes</span></h1>
+        <p class="pagina-cabecera__texto">Respuestas rápidas sobre compras, envíos, cambios y tallas.</p>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="contenedor faq">
+
+        <!-- Buscador de preguntas -->
+        <div class="faq-buscar">
+          <label class="campo-buscar" for="faq-q">
+            <svg class="icono" aria-hidden="true"><use href="img/iconos.svg#buscar"/></svg>
+            <input class="campo" type="search" id="faq-q" placeholder="Busca tu pregunta: envío, talla, cambio…" autocomplete="off">
+          </label>
+        </div>
+
+        <!-- ===== Compras ===== -->
+        <section class="faq-grupo" aria-labelledby="g-compras">
+          <h2 id="g-compras"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#carrito"/></svg> Compras y pedidos</h2>
+
+          <details class="faq-item" name="faq">
+            <summary>¿Cómo hago una compra?</summary>
+            <p>Elige tus productos en el catálogo, selecciona la talla y pulsa <b>Agregar</b>. Luego entra al carrito, revisa las cantidades y pulsa <b>Continuar con la compra</b> para llenar tus datos y confirmar el pedido.</p>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary>¿Qué métodos de pago aceptan?</summary>
+            <p>Puedes elegir <b>pago contra entrega</b> o <b>transferencia / QR</b>. Esta tienda es un proyecto académico: la compra es simulada y no se cobra nada real.</p>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary>¿Puedo cambiar o quitar productos del carrito?</summary>
+            <p>Sí. En el carrito puedes aumentar o disminuir la cantidad, quitar un producto con la X o vaciarlo por completo. Tu carrito se guarda en el navegador, así que no se pierde si cierras la página.</p>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary>¿Qué significa “bajo stock” o “agotado”?</summary>
+            <p>“Últimas unidades” indica que quedan 5 o menos. “Agotado” significa que por ahora no hay unidades y no se puede agregar al carrito.</p>
+          </details>
+        </section>
+
+        <!-- ===== Envíos ===== -->
+        <section class="faq-grupo" aria-labelledby="g-envios">
+          <h2 id="g-envios"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#camion"/></svg> Envíos</h2>
+
+          <details class="faq-item" name="faq">
+            <summary>¿Cuánto cuesta el envío?</summary>
+            <p>El envío es <b>gratis</b> en compras desde <b data-envio-min></b>. Por debajo de ese monto se aplica un costo fijo que verás en el carrito antes de confirmar.</p>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary>¿Hacen envíos a todo Bolivia?</summary>
+            <p>Sí, la meta de KINETIC SPORT es llegar a todo el país. En el formulario de compra puedes elegir tu departamento de entrega.</p>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary>¿Cuánto demora mi pedido?</summary>
+            <p>Depende de tu ciudad. Al confirmar el pedido recibirás un número de seguimiento y los detalles por correo (en este proyecto, de forma simulada).</p>
+          </details>
+        </section>
+
+        <!-- ===== Cambios ===== -->
+        <section class="faq-grupo" aria-labelledby="g-cambios">
+          <h2 id="g-cambios"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#devolver"/></svg> Cambios y devoluciones</h2>
+
+          <details class="faq-item" name="faq">
+            <summary>¿Puedo cambiar un producto si no me queda?</summary>
+            <p>Sí, tienes <b>7 días</b> desde que recibes tu pedido para pedir un cambio de talla o modelo, siempre que el producto esté sin uso y con su etiqueta.</p>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary>¿Qué hago si mi producto llegó con un defecto?</summary>
+            <p>Escríbenos desde la página de <a class="enlace-flecha" href="contacto.html">Contacto</a> con tu número de pedido y una foto. Lo revisaremos y te ayudaremos con el cambio.</p>
+          </details>
+        </section>
+
+        <!-- ===== Productos y tallas ===== -->
+        <section class="faq-grupo" aria-labelledby="g-tallas">
+          <h2 id="g-tallas"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#info"/></svg> Productos y tallas</h2>
+
+          <details class="faq-item" name="faq">
+            <summary>¿Cómo elijo mi talla?</summary>
+            <p>En la página de cada producto de ropa o calzado encontrarás el botón <b>Guía de tallas</b> con las medidas. Si estás entre dos tallas, te recomendamos la mayor.</p>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary>¿Los productos son para principiantes o para deportistas avanzados?</summary>
+            <p>Para ambos. En el catálogo puedes filtrar por <b>nivel</b> (principiante, intermedio o avanzado) y por género para encontrar lo que mejor se adapta a ti.</p>
+          </details>
+
+          <details class="faq-item" name="faq">
+            <summary>¿Cómo guardo mis productos favoritos?</summary>
+            <p>Pulsa el corazón en cualquier producto. Para verlos todos juntos, usa el corazón del encabezado: te lleva al catálogo mostrando solo tus favoritos.</p>
+          </details>
+        </section>
+
+        <!-- Sin resultados de búsqueda -->
+        <p class="estado-vacio" id="faq-vacio" hidden>
+          No encontramos esa pregunta. Prueba con otra palabra o <a class="enlace-flecha" href="contacto.html">escríbenos</a>.
+        </p>
+
+        <!-- Llamado a contacto -->
+        <div class="faq-contacto">
+          <div>
+            <h2>¿No encontraste tu respuesta?</h2>
+            <p>Escríbenos y te ayudamos lo antes posible.</p>
+          </div>
+          <a class="btn btn--primario" href="contacto.html">Ir a Contacto</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie__grid">
+      <div>
+        <a class="pie__logo" href="index.html"><img src="img/logo/logo-oscuro.svg" alt="KINETIC SPORT" width="176" height="44"></a>
+        <p class="pie__lema">Muévete. Supérate.</p>
+        <p>Tienda deportiva virtual nacida en Oruro, Bolivia, con productos para todas las disciplinas.</p>
+        <div class="pie__redes">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#facebook"/></svg></a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#instagram"/></svg></a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg class="icono" aria-hidden="true"><use href="img/iconos.svg#youtube"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Tienda</h3>
+        <ul>
+          <li><a href="productos.html">Todos los productos</a></li>
+          <li><a href="productos.html?categoria=F%C3%BAtbol">Fútbol</a></li>
+          <li><a href="productos.html?categoria=B%C3%A1squetbol">Básquetbol</a></li>
+          <li><a href="productos.html?categoria=Running">Running</a></li>
+          <li><a href="productos.html?categoria=Fitness">Fitness</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ayuda</h3>
+        <ul>
+          <li><a href="faq.html">Preguntas frecuentes</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="carrito.html">Mi carrito</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li>Av. Bolivar #123, Oruro, Bolivia</li>
+          <li>+591 67260078</li>
+          <li>contacto@kineticsport.demo</li>
+          <li>Lunes a sábado, 9:00 a 19:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="contenedor pie__legal">
+      <p>© <span data-anio></span> KINETIC SPORT · Proyecto académico de Diseño y Programación Web</p>
+      <p>Productos, dirección, teléfono y correo son datos de demostración.</p>
+    </div>
+  </footer>
+
+  <div class="notificaciones" id="notificaciones" aria-live="polite"></div>
+</body>
+</html>
